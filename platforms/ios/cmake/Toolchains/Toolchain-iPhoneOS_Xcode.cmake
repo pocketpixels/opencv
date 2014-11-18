@@ -21,6 +21,9 @@ set (CMAKE_CXX_COMPILER_ABI ELF)
 # Skip the platform compiler checks for cross compiling
 set (CMAKE_CXX_COMPILER_WORKS TRUE)
 set (CMAKE_C_COMPILER_WORKS TRUE)
+set (HAVE_CXX_MFPU_NEON TRUE)
+set (HAVE_C_MFPU_NEON TRUE)
+
 
 # Search for programs in the build host directories
 SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM ONLY)

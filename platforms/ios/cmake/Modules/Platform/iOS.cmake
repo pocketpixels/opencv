@@ -65,12 +65,13 @@ if (NOT DEFINED CMAKE_INSTALL_NAME_TOOL)
     find_program(CMAKE_INSTALL_NAME_TOOL install_name_tool)
 endif (NOT DEFINED CMAKE_INSTALL_NAME_TOOL)
 
+
 # Setup iOS developer location
 if (IPHONEOS)
-    set (_CMAKE_IOS_DEVELOPER_ROOT "/Developer/Platforms/iPhoneOS.platform/Developer")
+    set (_CMAKE_IOS_DEVELOPER_ROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer")
 else ()
     if (IPHONESIMULATOR)
-        set (_CMAKE_IOS_DEVELOPER_ROOT "/Developer/Platforms/iPhoneSimulator.platform/Developer")
+        set (_CMAKE_IOS_DEVELOPER_ROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer")
     endif ()
 endif ()
 # Find installed iOS SDKs
@@ -86,7 +87,7 @@ if (_CMAKE_IOS_SDKS)
     set (CMAKE_OSX_SYSROOT ${_CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS support")
 
     # set the architecture for iOS - this env var sets armv6,armv7 and appears to be XCode's standard. The other found is ARCHS_UNIVERSAL_IPHONE_OS but that is armv7 only
-    set (CMAKE_OSX_ARCHITECTURES "$(ARCHS_STANDARD_32_BIT)" CACHE string  "Build architecture for iOS")
+    set (CMAKE_OSX_ARCHITECTURES "$(ARCHS_STANDARD)" CACHE string  "Build architecture for iOS")
 
     # Set the default based on this file and not the environment variable
     set (CMAKE_FIND_ROOT_PATH ${_CMAKE_IOS_DEVELOPER_ROOT} ${_CMAKE_IOS_SDK_ROOT} CACHE string  "iOS library search path root")
